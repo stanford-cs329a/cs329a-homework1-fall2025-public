@@ -65,7 +65,7 @@ system_prompt = aime25.get_system_prompt()
 verifier = get_verifier("aime25")
 
 # Example: Sample with Together AI using Qwen model
-method = get_sampler("sample_multiple", "together_ai/Qwen/Qwen3-Next-80B-A3B-Instruct", temperature=0.7, n_samples=16, system_prompt=system_prompt)
+method = get_sampler("sample_multiple", "together_ai/Qwen/Qwen3.5-9B", temperature=0.7, n_samples=16, system_prompt=system_prompt)
 ```
 
 ## Features

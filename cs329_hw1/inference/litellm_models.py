@@ -59,11 +59,17 @@ class LiteLLMModel:
         Returns:
             str: The response from the model.
         """
+        extra = {}
+        if "Qwen3.5" in self.model:
+            # Qwen3.5 thinks by default and can exhaust max_tokens on reasoning,
+            # returning empty content. Disable thinking (matches the non-reasoning Instruct model).
+            extra["extra_body"] = {"reasoning": {"enabled": False}}
         response = completion(
             model=self.model,
             messages=messages,
             temperature=self.temperature,
             max_tokens=self.max_tokens,
+            **extra,
         )
         return response["choices"][0]["message"]["content"]
 
